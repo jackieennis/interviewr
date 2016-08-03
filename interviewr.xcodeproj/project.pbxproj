@@ -7,21 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11E03AD5A3EDCDB97055021D /* Pods_interviewr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0BAC97BDA09F4581078CAB /* Pods_interviewr.framework */; };
+		A1AD115C1D528E370005F458 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AD115B1D528E370005F458 /* Question.swift */; };
 		A1AE6EA01D5221FF00A27491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6E9F1D5221FF00A27491 /* AppDelegate.swift */; };
-		A1AE6EA21D5221FF00A27491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EA11D5221FF00A27491 /* ViewController.swift */; };
 		A1AE6EA51D5221FF00A27491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1AE6EA31D5221FF00A27491 /* Main.storyboard */; };
 		A1AE6EA71D5221FF00A27491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1AE6EA61D5221FF00A27491 /* Assets.xcassets */; };
 		A1AE6EAA1D5221FF00A27491 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1AE6EA81D5221FF00A27491 /* LaunchScreen.storyboard */; };
+		A1AE6EB41D522B9400A27491 /* QuestionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB31D522B9400A27491 /* QuestionListTableViewController.swift */; };
+		A1AE6EB61D522BE000A27491 /* VideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB51D522BE000A27491 /* VideoRecorderViewController.swift */; };
+		A1AE6EB81D522BFB00A27491 /* VideoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB71D522BFB00A27491 /* VideoPickerViewController.swift */; };
+		A1AE6EBA1D523BF800A27491 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB91D523BF800A27491 /* QuestionTableViewCell.swift */; };
+		A1AE6EBC1D5281EF00A27491 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EBB1D5281EF00A27491 /* RealmHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9378636AC841F1D73AB336A7 /* Pods-interviewr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-interviewr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-interviewr/Pods-interviewr.debug.xcconfig"; sourceTree = "<group>"; };
+		A1AD115B1D528E370005F458 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A1AE6E9C1D5221FF00A27491 /* interviewr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = interviewr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AE6E9F1D5221FF00A27491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1AE6EA11D5221FF00A27491 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A1AE6EA41D5221FF00A27491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1AE6EA61D5221FF00A27491 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1AE6EA91D5221FF00A27491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1AE6EAB1D5221FF00A27491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1AE6EB31D522B9400A27491 /* QuestionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListTableViewController.swift; sourceTree = "<group>"; };
+		A1AE6EB51D522BE000A27491 /* VideoRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderViewController.swift; sourceTree = "<group>"; };
+		A1AE6EB71D522BFB00A27491 /* VideoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPickerViewController.swift; sourceTree = "<group>"; };
+		A1AE6EB91D523BF800A27491 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		A1AE6EBB1D5281EF00A27491 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		AA0BAC97BDA09F4581078CAB /* Pods_interviewr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_interviewr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46D44AC95533FD5A848180E /* Pods-interviewr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-interviewr.release.xcconfig"; path = "Pods/Target Support Files/Pods-interviewr/Pods-interviewr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E03AD5A3EDCDB97055021D /* Pods_interviewr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A120B3E734A3E67F4C93BFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9378636AC841F1D73AB336A7 /* Pods-interviewr.debug.xcconfig */,
+				D46D44AC95533FD5A848180E /* Pods-interviewr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A1AE6E931D5221FF00A27491 = {
 			isa = PBXGroup;
 			children = (
 				A1AE6E9E1D5221FF00A27491 /* interviewr */,
 				A1AE6E9D1D5221FF00A27491 /* Products */,
+				7A120B3E734A3E67F4C93BFD /* Pods */,
+				D8587755C7DA43A8CDBC8D4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +81,26 @@
 			isa = PBXGroup;
 			children = (
 				A1AE6E9F1D5221FF00A27491 /* AppDelegate.swift */,
-				A1AE6EA11D5221FF00A27491 /* ViewController.swift */,
 				A1AE6EA31D5221FF00A27491 /* Main.storyboard */,
+				A1AE6EB91D523BF800A27491 /* QuestionTableViewCell.swift */,
+				A1AE6EB31D522B9400A27491 /* QuestionListTableViewController.swift */,
+				A1AE6EB51D522BE000A27491 /* VideoRecorderViewController.swift */,
+				A1AE6EB71D522BFB00A27491 /* VideoPickerViewController.swift */,
 				A1AE6EA61D5221FF00A27491 /* Assets.xcassets */,
 				A1AE6EA81D5221FF00A27491 /* LaunchScreen.storyboard */,
 				A1AE6EAB1D5221FF00A27491 /* Info.plist */,
+				A1AD115B1D528E370005F458 /* Question.swift */,
+				A1AE6EBB1D5281EF00A27491 /* RealmHelper.swift */,
 			);
 			path = interviewr;
+			sourceTree = "<group>";
+		};
+		D8587755C7DA43A8CDBC8D4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA0BAC97BDA09F4581078CAB /* Pods_interviewr.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1AE6EAE1D5221FF00A27491 /* Build configuration list for PBXNativeTarget "interviewr" */;
 			buildPhases = (
+				FEA9D5F25A81422A8CAEDEDB /* [CP] Check Pods Manifest.lock */,
 				A1AE6E981D5221FF00A27491 /* Sources */,
 				A1AE6E991D5221FF00A27491 /* Frameworks */,
 				A1AE6E9A1D5221FF00A27491 /* Resources */,
+				0653FF00230FAF5D74D8572A /* [CP] Embed Pods Frameworks */,
+				13457AC19024D22CF38308D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,13 +173,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0653FF00230FAF5D74D8572A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-interviewr/Pods-interviewr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		13457AC19024D22CF38308D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-interviewr/Pods-interviewr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEA9D5F25A81422A8CAEDEDB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A1AE6E981D5221FF00A27491 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1AE6EA21D5221FF00A27491 /* ViewController.swift in Sources */,
+				A1AE6EB61D522BE000A27491 /* VideoRecorderViewController.swift in Sources */,
+				A1AE6EBC1D5281EF00A27491 /* RealmHelper.swift in Sources */,
+				A1AE6EBA1D523BF800A27491 /* QuestionTableViewCell.swift in Sources */,
 				A1AE6EA01D5221FF00A27491 /* AppDelegate.swift in Sources */,
+				A1AE6EB81D522BFB00A27491 /* VideoPickerViewController.swift in Sources */,
+				A1AD115C1D528E370005F458 /* Question.swift in Sources */,
+				A1AE6EB41D522B9400A27491 /* QuestionListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +343,7 @@
 		};
 		A1AE6EAF1D5221FF00A27491 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9378636AC841F1D73AB336A7 /* Pods-interviewr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = interviewr/Info.plist;
@@ -259,6 +355,7 @@
 		};
 		A1AE6EB01D5221FF00A27491 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D46D44AC95533FD5A848180E /* Pods-interviewr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = interviewr/Info.plist;
@@ -287,6 +384,7 @@
 				A1AE6EB01D5221FF00A27491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
