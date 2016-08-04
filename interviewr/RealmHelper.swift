@@ -6,7 +6,7 @@
 //  Copyright © 2016 Jackie Ennis. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 import RealmSwift
 
 class RealmHelper {
@@ -25,13 +25,13 @@ class RealmHelper {
         try! realm.write() {
             realm.delete(question)
         }
-        
     }
     
     //helper method
-    static func retrieveNotes() -> [Question] {
+    static func retrieveQuestions() -> Results<Question> {
         let realm = try! Realm()
-        return realm.objects()
+        return realm.objects(Question).sorted("text", ascending: true)
     }
 
 }
+*/

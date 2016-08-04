@@ -82,20 +82,45 @@
                     <view key="view" contentMode="scaleToFill" id="qsL-sb-6DC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-yo-uXO">
+                                <rect key="frame" x="276" y="408" width="48" height="48"/>
+                                <state key="normal" image="Circle Thin-48"/>
+                                <connections>
+                                    <action selector="capture:" destination="VvD-as-K5h" eventType="touchUpInside" id="MyT-cC-cjl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4kg-1o-mtS" firstAttribute="top" secondItem="Qbu-yo-uXO" secondAttribute="bottom" constant="95" id="afK-1H-vJr"/>
+                            <constraint firstItem="Qbu-yo-uXO" firstAttribute="centerX" secondItem="qsL-sb-6DC" secondAttribute="centerX" id="ueq-fH-bCT"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Video Call Filled-50" id="hds-28-sii" userLabel="Video Tab Bar Item">
                         <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="cameraButton" destination="Qbu-yo-uXO" id="X1g-bu-2xz"/>
+                        <segue destination="xxd-bH-5gs" kind="presentation" identifier="playVideo" id="UjW-lJ-H4k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvY-bQ-0q0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="634" y="703"/>
         </scene>
-        <!--Video Picker View Controller-->
+        <!--AV Player View Controller-->
+        <scene sceneID="j97-Cg-nFZ">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="xxd-bH-5gs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9J0-kd-L7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1312" y="704"/>
+        </scene>
+        <!--Collection View Controller-->
         <scene sceneID="9M4-Vm-DeW">
             <objects>
-                <viewController id="QI3-gj-22r" customClass="VideoPickerViewController" customModule="interviewr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QI3-gj-22r" customClass="UICollectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pj8-5n-bU7"/>
                         <viewControllerLayoutGuide type="bottom" id="93a-4K-KWO"/>
@@ -103,6 +128,28 @@
                     <view key="view" contentMode="scaleToFill" id="aQx-u6-AF3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Ly-WJ-orb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HUj-Zb-IMn">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cpp-uK-IFA">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Video Playlist Filled-50" id="BfX-W6-las" userLabel="Album Tab Bar Item">
@@ -159,6 +206,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Circle Thin-48" width="48" height="48"/>
         <image name="List-50" width="50" height="50"/>
         <image name="Video Call Filled-50" width="50" height="50"/>
         <image name="Video Playlist Filled-50" width="50" height="50"/>

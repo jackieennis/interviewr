@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoPickerViewController: UIViewController {
+class VideoPickerViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

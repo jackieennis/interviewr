@@ -8,17 +8,17 @@
 
 import UIKit
 
-class QuestionListTableViewController: UITableViewController {
+class QuestionListTableViewController: UITableViewController, UITabBarControllerDelegate {
     
     //mutable array of interview questions
-    var interviewQuestions = [Question]()
+    var interviewQuestions = ["Tell me a little bit about yourself.", "How did you hear about the position?", "What do you know about the company?", "Why do you want this job?", "Why should we hire you?", "What is your greatest professional achievement?", "What do you consider to be your weaknesses?", "What is your greatest professional achievement?", "Tell me about a challenge or conflict you've faced at work, and how you dealt with it.", "Where do you see yourself in five years?", "What's your dream job?", "What's a time you exercised leadership?", "How would your boss and co-workers describe you?", "How do you deal with pressure or stressful situations?", "Do you have any questions for us?"]
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath
         indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! QuestionTableViewCell
         // Configure the cell...
-        cell.questionLabel.text = interviewQuestions[indexPath.row].text
+        cell.questionLabel.text = interviewQuestions[indexPath.row]
         return cell
     }
 
@@ -31,13 +31,30 @@ class QuestionListTableViewController: UITableViewController {
         self.navigationItem.title = "Interview Questions"
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        interviewQuestions = RealmHelper.retrieveQuestions()
-
+        tabBarController?.delegate = self
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        
+        let selectedIndex = tabBarController.viewControllers?.indexOf(viewController)
+        
+        if selectedIndex == 1 {
+            print("This is the video tab")
+            return true
+        } else if selectedIndex == 0 {
+            print("This is the first tab")
+            return true
+        } else if selectedIndex == 0 {
+            print("This is the album tab")
+            return true
+        }
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,7 +85,7 @@ class QuestionListTableViewController: UITableViewController {
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         
-        let itemToMove:Question = interviewQuestions[fromIndexPath.row]
+        let itemToMove:String = interviewQuestions[fromIndexPath.row]
         interviewQuestions.removeAtIndex(fromIndexPath.row)
         interviewQuestions.insert(itemToMove, atIndex: toIndexPath.row)
         
