@@ -21,7 +21,6 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
         
         // Preset the session for taking photo in full resolution
