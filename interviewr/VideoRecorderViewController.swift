@@ -10,24 +10,32 @@ import UIKit
 import AVFoundation
 import AVKit
 
-class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordingDelegate{
+class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     @IBOutlet weak var cameraButton: UIButton!
+    
+    static var allRecordingsArray = [NSURL]()
+    static var interviewTitlesArray = [String]()
     
     let captureSession = AVCaptureSession()
     var currentDevice: AVCaptureDevice?
     var videoFileOutput: AVCaptureMovieFileOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     var isRecording = false
+    var videoCount = 0
+    //Create the alert controller for video title prompt
+    var titleAlert = UIAlertController(title: "Give this recording a name.", message: "Which interview is this for?", preferredStyle: .Alert)
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureSession.sessionPreset = AVCaptureSessionPresetHigh
         
         // Preset the session for taking photo in full resolution
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        
         // Get the available devices that is capable of taking video
         let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo) as!
             [AVCaptureDevice]
+       
         // Get the front-facing camera for taking videos
         for device in devices {
             if device.position == AVCaptureDevicePosition.Front {
@@ -51,15 +59,25 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
         
         // Provide a camera preview
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        view.layer.addSublayer(cameraPreviewLayer!)
-        cameraPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        cameraPreviewLayer?.frame = view.layer.frame
-        // Bring the camera button to front
-        view.bringSubviewToFront(cameraButton)
-        captureSession.startRunning()
         
+        // Add and configure the text field
+        titleAlert.addTextFieldWithConfigurationHandler({
+            (textField) -> Void in
+            let todaysDate = self.getDate()
+            textField.text = "\(todaysDate)"
+        })
+        //  Grab the value from the text field, and print it when the user clicks OK.
+        titleAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            let textField = self.titleAlert.textFields![0] as UITextField
+            VideoRecorderViewController.interviewTitlesArray.append(textField.text!)
+            print("Text field: \(textField.text)")
+            self.goToCollectionView()
+        }))
+    
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         // Provide a camera preview
-        cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         view.layer.addSublayer(cameraPreviewLayer!)
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         cameraPreviewLayer?.frame = view.layer.frame
@@ -80,8 +98,12 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
                 .Autoreverse, .AllowUserInteraction], animations: { () -> Void in
                     self.cameraButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
                 }, completion: nil)
-            let outputPath = NSTemporaryDirectory() + "output.mov"
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
+            let outputPath = "\(documentsPath)/output\(self.videoCount).mov"
+            videoCount = videoCount + 1
             let outputFileURL = NSURL(fileURLWithPath: outputPath)
+            VideoRecorderViewController.allRecordingsArray.append(outputFileURL)
+            print("Output file path: \(outputFileURL)")
             videoFileOutput?.startRecordingToOutputFileURL(outputFileURL, recordingDelegate: self)
         } else {
             isRecording = false
@@ -102,20 +124,33 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
             print(error)
             return
         }
-        performSegueWithIdentifier("playVideo", sender: outputFileURL)
+        //Present the alert.
+        self.presentViewController(titleAlert, animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "playVideo" {
-            let videoPlayerViewController = segue.destinationViewController as!
-            AVPlayerViewController
-            let videoFileURL = sender as! NSURL
-            videoPlayerViewController.player = AVPlayer(URL: videoFileURL)
-        }
-    }
+    // override func reForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //}
     
     @IBAction func unwindToCamera(segue:UIStoryboardSegue) {
         
+    }
+    
+    @IBAction func goToCollectionView() {
+        
+        tabBarController?.selectedIndex = 2
+    }
+    
+    func getDate() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .MediumStyle
+        dateFormatter.timeStyle = .NoStyle
+        
+        let date = NSDate()
+        
+        // US English Locale (en_US)
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+        let dateString = dateFormatter.stringFromDate(date) // Jan 2, 2001
+        return dateString
     }
 
     /*

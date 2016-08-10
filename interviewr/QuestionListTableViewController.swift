@@ -45,7 +45,7 @@ class QuestionListTableViewController: UITableViewController, UITabBarController
         let selectedIndex = tabBarController.viewControllers?.indexOf(viewController)
         
         if selectedIndex == 1 {
-            print("This is the video tab")
+            //print("This is the video tab")
             return true
         } else if selectedIndex == 0 {
             print("This is the first tab")

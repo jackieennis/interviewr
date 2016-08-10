@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j3N-bC-4MY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j3N-bC-4MY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -69,7 +69,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQN-h8-ft4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="-11"/>
+            <point key="canvasLocation" x="1356" y="-91"/>
         </scene>
         <!--Video Recorder View Controller-->
         <scene sceneID="Eyy-6f-LuE">
@@ -84,8 +84,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-yo-uXO">
-                                <rect key="frame" x="276" y="408" width="48" height="48"/>
-                                <state key="normal" image="Circle Thin-48"/>
+                                <rect key="frame" x="270" y="396" width="60" height="60"/>
+                                <state key="normal" image="outerCameraButton"/>
                                 <connections>
                                     <action selector="capture:" destination="VvD-as-K5h" eventType="touchUpInside" id="MyT-cC-cjl"/>
                                 </connections>
@@ -93,21 +93,71 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4kg-1o-mtS" firstAttribute="top" secondItem="Qbu-yo-uXO" secondAttribute="bottom" constant="95" id="afK-1H-vJr"/>
-                            <constraint firstItem="Qbu-yo-uXO" firstAttribute="centerX" secondItem="qsL-sb-6DC" secondAttribute="centerX" id="ueq-fH-bCT"/>
+                            <constraint firstItem="4kg-1o-mtS" firstAttribute="top" secondItem="Qbu-yo-uXO" secondAttribute="bottom" constant="95" id="HVG-YT-8nQ"/>
+                            <constraint firstItem="Qbu-yo-uXO" firstAttribute="centerX" secondItem="qsL-sb-6DC" secondAttribute="centerX" id="I59-61-kjX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Video Call Filled-50" id="hds-28-sii" userLabel="Video Tab Bar Item">
-                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
+                        <inset key="imageInsets" minX="4" minY="12" maxX="5" maxY="-4"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="cameraButton" destination="Qbu-yo-uXO" id="X1g-bu-2xz"/>
-                        <segue destination="xxd-bH-5gs" kind="presentation" identifier="playVideo" id="UjW-lJ-H4k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvY-bQ-0q0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="634" y="703"/>
+            <point key="canvasLocation" x="974" y="631"/>
+        </scene>
+        <!--Recordings-->
+        <scene sceneID="aXb-zp-vjI">
+            <objects>
+                <collectionViewController id="58j-ML-ZuM" customClass="VidCollectionViewController" customModule="interviewr" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Ygr-V2-LPn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KYO-kY-O3P">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Default" id="bXb-SN-bYj" customClass="VidCollectionViewCell" customModule="interviewr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8s-vh-gkV">
+                                            <rect key="frame" x="31.5" y="40.5" width="37.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="G8s-vh-gkV" firstAttribute="centerX" secondItem="bXb-SN-bYj" secondAttribute="centerX" id="cGw-Iv-ndr"/>
+                                    <constraint firstItem="G8s-vh-gkV" firstAttribute="centerY" secondItem="bXb-SN-bYj" secondAttribute="centerY" id="hnZ-ml-M4r"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="label" destination="G8s-vh-gkV" id="9dX-E0-tot"/>
+                                    <segue destination="xxd-bH-5gs" kind="presentation" identifier="playVideolol" id="wbK-08-xgg"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="58j-ML-ZuM" id="RlS-xa-lG4"/>
+                            <outlet property="delegate" destination="58j-ML-ZuM" id="pGs-tc-TIr"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Recordings" id="fgg-Uq-Ny7"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0W-CN-WuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="1424"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="j97-Cg-nFZ">
@@ -115,55 +165,12 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="xxd-bH-5gs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9J0-kd-L7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1312" y="704"/>
-        </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="9M4-Vm-DeW">
-            <objects>
-                <viewController id="QI3-gj-22r" customClass="UICollectionViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Pj8-5n-bU7"/>
-                        <viewControllerLayoutGuide type="bottom" id="93a-4K-KWO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aQx-u6-AF3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Ly-WJ-orb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HUj-Zb-IMn">
-                                    <size key="itemSize" width="100" height="100"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cpp-uK-IFA">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="Video Playlist Filled-50" id="BfX-W6-las" userLabel="Album Tab Bar Item">
-                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
-                    </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hNf-3J-cXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="640" y="1410"/>
+            <point key="canvasLocation" x="2072" y="1414"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="b8h-p1-ZcL">
             <objects>
-                <tabBarController id="j3N-bC-4MY" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="j3N-bC-4MY" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="gaX-Nt-6Yy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -172,7 +179,7 @@
                     <connections>
                         <segue destination="sKn-zn-80l" kind="relationship" relationship="viewControllers" id="rFp-Dr-kGi"/>
                         <segue destination="VvD-as-K5h" kind="relationship" relationship="viewControllers" id="NAE-zW-aKD"/>
-                        <segue destination="QI3-gj-22r" kind="relationship" relationship="viewControllers" id="aiR-WU-vpQ"/>
+                        <segue destination="xyB-5o-IUK" kind="relationship" relationship="viewControllers" id="aiR-WU-vpQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4l-gd-W5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,7 +191,7 @@
             <objects>
                 <navigationController title="Interview Questions" automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenVerticallyCompact="YES" id="sKn-zn-80l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="List-50" id="VDg-Sn-QPR" userLabel="List Tab Bar Item">
-                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
+                        <inset key="imageInsets" minX="9" minY="14" maxX="2" maxY="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VYg-oQ-pwK">
@@ -202,13 +209,34 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMv-vj-r2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584" y="-11"/>
+            <point key="canvasLocation" x="580" y="-79"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yDQ-Uy-Dla">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xyB-5o-IUK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Video Playlist Filled-50" id="BfX-W6-las" userLabel="Album Tab Bar Item">
+                        <inset key="imageInsets" minX="8" minY="13" maxX="5" maxY="-1"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J58-bt-Xbx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="58j-ML-ZuM" kind="relationship" relationship="rootViewController" id="rgb-Zm-zAV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqV-oD-dVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="492" y="1414"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Circle Thin-48" width="48" height="48"/>
         <image name="List-50" width="50" height="50"/>
         <image name="Video Call Filled-50" width="50" height="50"/>
         <image name="Video Playlist Filled-50" width="50" height="50"/>
+        <image name="outerCameraButton" width="60" height="60"/>
     </resources>
 </document>
