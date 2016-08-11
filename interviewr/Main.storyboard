@@ -83,9 +83,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-yo-uXO">
-                                <rect key="frame" x="270" y="396" width="60" height="60"/>
-                                <state key="normal" image="outerCameraButton"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-yo-uXO">
+                                <rect key="frame" x="268.5" y="437" width="64" height="64"/>
+                                <state key="normal" image="whiteButton_final"/>
                                 <connections>
                                     <action selector="capture:" destination="VvD-as-K5h" eventType="touchUpInside" id="MyT-cC-cjl"/>
                                 </connections>
@@ -93,12 +93,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4kg-1o-mtS" firstAttribute="top" secondItem="Qbu-yo-uXO" secondAttribute="bottom" constant="95" id="HVG-YT-8nQ"/>
+                            <constraint firstItem="4kg-1o-mtS" firstAttribute="top" secondItem="Qbu-yo-uXO" secondAttribute="bottom" constant="50" id="HVG-YT-8nQ"/>
                             <constraint firstItem="Qbu-yo-uXO" firstAttribute="centerX" secondItem="qsL-sb-6DC" secondAttribute="centerX" id="I59-61-kjX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Video Call Filled-50" id="hds-28-sii" userLabel="Video Tab Bar Item">
-                        <inset key="imageInsets" minX="4" minY="12" maxX="5" maxY="-4"/>
+                    <tabBarItem key="tabBarItem" title="" image="videoIcon" id="hds-28-sii" userLabel="Video Tab Bar Item">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="cameraButton" destination="Qbu-yo-uXO" id="X1g-bu-2xz"/>
@@ -177,6 +177,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="sKn-zn-80l" kind="relationship" relationship="viewControllers" id="rFp-Dr-kGi"/>
@@ -192,16 +193,17 @@
         <scene sceneID="7nE-ZM-qmC">
             <objects>
                 <navigationController title="Interview Questions" automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenVerticallyCompact="YES" id="sKn-zn-80l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="List-50" id="VDg-Sn-QPR" userLabel="List Tab Bar Item">
-                        <inset key="imageInsets" minX="9" minY="14" maxX="2" maxY="-2"/>
+                    <tabBarItem key="tabBarItem" title="" image="listIcon" id="VDg-Sn-QPR" userLabel="List Tab Bar Item">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VYg-oQ-pwK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="VYg-oQ-pwK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                            <color key="textColor" red="0.97905645075763081" green="0.978461320694614" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -213,17 +215,21 @@
             </objects>
             <point key="canvasLocation" x="580" y="-79"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Recordings-->
         <scene sceneID="yDQ-Uy-Dla">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xyB-5o-IUK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Video Playlist Filled-50" id="BfX-W6-las" userLabel="Album Tab Bar Item">
-                        <inset key="imageInsets" minX="8" minY="13" maxX="5" maxY="-1"/>
+                <navigationController title="Recordings" automaticallyAdjustsScrollViewInsets="NO" id="xyB-5o-IUK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="collectionIcon" id="BfX-W6-las" userLabel="Album Tab Bar Item">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J58-bt-Xbx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="J58-bt-Xbx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -236,9 +242,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="List-50" width="50" height="50"/>
-        <image name="Video Call Filled-50" width="50" height="50"/>
-        <image name="Video Playlist Filled-50" width="50" height="50"/>
-        <image name="outerCameraButton" width="60" height="60"/>
+        <image name="collectionIcon" width="28" height="24"/>
+        <image name="listIcon" width="28" height="22"/>
+        <image name="videoIcon" width="30" height="20"/>
+        <image name="whiteButton_final" width="64" height="64"/>
     </resources>
 </document>

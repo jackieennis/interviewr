@@ -17,7 +17,6 @@
 		A1AE6EAA1D5221FF00A27491 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1AE6EA81D5221FF00A27491 /* LaunchScreen.storyboard */; };
 		A1AE6EB41D522B9400A27491 /* QuestionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB31D522B9400A27491 /* QuestionListTableViewController.swift */; };
 		A1AE6EB61D522BE000A27491 /* VideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB51D522BE000A27491 /* VideoRecorderViewController.swift */; };
-		A1AE6EB81D522BFB00A27491 /* VideoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB71D522BFB00A27491 /* VideoPickerViewController.swift */; };
 		A1AE6EBA1D523BF800A27491 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EB91D523BF800A27491 /* QuestionTableViewCell.swift */; };
 		A1AE6EBC1D5281EF00A27491 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE6EBB1D5281EF00A27491 /* RealmHelper.swift */; };
 /* End PBXBuildFile section */
@@ -35,7 +34,6 @@
 		A1AE6EAB1D5221FF00A27491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1AE6EB31D522B9400A27491 /* QuestionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListTableViewController.swift; sourceTree = "<group>"; };
 		A1AE6EB51D522BE000A27491 /* VideoRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderViewController.swift; sourceTree = "<group>"; };
-		A1AE6EB71D522BFB00A27491 /* VideoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPickerViewController.swift; sourceTree = "<group>"; };
 		A1AE6EB91D523BF800A27491 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		A1AE6EBB1D5281EF00A27491 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		AA0BAC97BDA09F4581078CAB /* Pods_interviewr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_interviewr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +61,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A126956E1D5D14DA00EA7998 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A1AE6EB51D522BE000A27491 /* VideoRecorderViewController.swift */,
+				A1AE6EB31D522B9400A27491 /* QuestionListTableViewController.swift */,
+				A163F74A1D5A974B0088FDD7 /* VidCollectionViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		A1AE6E931D5221FF00A27491 = {
 			isa = PBXGroup;
 			children = (
@@ -85,12 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				A1AE6E9F1D5221FF00A27491 /* AppDelegate.swift */,
-				A1AE6EB91D523BF800A27491 /* QuestionTableViewCell.swift */,
-				A1AE6EB31D522B9400A27491 /* QuestionListTableViewController.swift */,
-				A1AE6EB51D522BE000A27491 /* VideoRecorderViewController.swift */,
-				A163F74A1D5A974B0088FDD7 /* VidCollectionViewController.swift */,
+				A126956E1D5D14DA00EA7998 /* View Controllers */,
 				A163F74C1D5A97610088FDD7 /* VidCollectionViewCell.swift */,
-				A1AE6EB71D522BFB00A27491 /* VideoPickerViewController.swift */,
+				A1AE6EB91D523BF800A27491 /* QuestionTableViewCell.swift */,
 				A163F74E1D5A97A50088FDD7 /* Main.storyboard */,
 				A1AE6EA61D5221FF00A27491 /* Assets.xcassets */,
 				A1AE6EA81D5221FF00A27491 /* LaunchScreen.storyboard */,
@@ -236,7 +241,6 @@
 				A1AE6EBC1D5281EF00A27491 /* RealmHelper.swift in Sources */,
 				A1AE6EBA1D523BF800A27491 /* QuestionTableViewCell.swift in Sources */,
 				A1AE6EA01D5221FF00A27491 /* AppDelegate.swift in Sources */,
-				A1AE6EB81D522BFB00A27491 /* VideoPickerViewController.swift in Sources */,
 				A1AD115C1D528E370005F458 /* Question.swift in Sources */,
 				A1AE6EB41D522B9400A27491 /* QuestionListTableViewController.swift in Sources */,
 				A163F74D1D5A97610088FDD7 /* VidCollectionViewCell.swift in Sources */,

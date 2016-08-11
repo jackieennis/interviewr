@@ -15,7 +15,8 @@ private let reuseIdentifier = "Default"
 class VidCollectionViewController: UICollectionViewController {
     
     var selectedIndexPath: Int?
-
+    var ourPlayer: AVPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,7 +56,8 @@ class VidCollectionViewController: UICollectionViewController {
             print(VideoRecorderViewController.allRecordingsArray)
             print(selectedIndexPath)
             let videoURL = VideoRecorderViewController.allRecordingsArray[selectedIndexPath!]
-            videoPlayerViewController.player = AVPlayer(URL: videoURL)
+            ourPlayer = AVPlayer(URL: videoURL)
+            videoPlayerViewController.player = ourPlayer
         }
     
     }

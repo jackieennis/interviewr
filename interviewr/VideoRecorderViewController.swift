@@ -13,22 +13,32 @@ import AVKit
 class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     @IBOutlet weak var cameraButton: UIButton!
     
+    //declare global array variables to be edited
     static var allRecordingsArray = [NSURL]()
     static var interviewTitlesArray = [String]()
     
     let captureSession = AVCaptureSession()
-    var currentDevice: AVCaptureDevice?
+    
+    var captureDevice: AVCaptureDevice?
+    var captureAudio: AVCaptureDevice?
+    
+    let videoDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+    let audioDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeAudio)
+    
     var videoFileOutput: AVCaptureMovieFileOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     var isRecording = false
     var videoCount = 0
+    
+    var buttonImageDefault: UIImage = UIImage(named: "whiteButton")!
+    var buttonImageRecording: UIImage = UIImage(named: "redButton")!
+    
     //Create the alert controller for video title prompt
     var titleAlert = UIAlertController(title: "Give this recording a name.", message: "Which interview is this for?", preferredStyle: .Alert)
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Preset the session for taking photo in full resolution
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
         
@@ -36,26 +46,84 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
         let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo) as!
             [AVCaptureDevice]
        
-        // Get the front-facing camera for taking videos
+         //Get the front-facing camera for taking videos
         for device in devices {
             if device.position == AVCaptureDevicePosition.Front {
-                currentDevice = device
+                captureDevice = device
             }
         }
-        let captureDeviceInput: AVCaptureDeviceInput
-        do {
-            captureDeviceInput = try AVCaptureDeviceInput(device: currentDevice)
-        } catch {
-            print(error)
-            return
-        }
+        
+        let videoInput = try! AVCaptureDeviceInput(device: videoDevice) //as AVCaptureDeviceInput
+        captureSession.addInput(videoInput)
+        let audioInput = try! AVCaptureDeviceInput(device: audioDevice) as AVCaptureInput
+        captureSession.addInput(audioInput)
+        
+        
+//        let captureDeviceInput: AVCaptureDeviceInput
+//        do {
+//            captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
+//        } catch {
+//            print(error)
+//            return
+//        }
+//        
+//        let audioCaptureDeviceInput: AVCaptureDeviceInput
+//        do {
+//            audioCaptureDeviceInput = try AVCaptureDeviceInput(device: captureAudio)
+//        } catch {
+//            print(error)
+//            return
+//        }
+        
+//        var captureDeviceVideoFound: Bool = false
+//        var captureDeviceAudioFound:Bool = false
+        
+//        for device in devices {
+//            // Make sure this particular device supports video
+//            if (device.hasMediaType(AVMediaTypeVideo)) {
+//                // Finally check the position and confirm we've got the front camera
+//                if(device.position == AVCaptureDevicePosition.Front) {
+//                    
+//                    captureDevice = device as? AVCaptureDevice //initialize video
+//                    if captureDevice != nil {
+//                        print("Capture device found")
+//                        captureDeviceVideoFound = true;
+//                    }
+//                }
+//            }
+//            if(device.hasMediaType(AVMediaTypeAudio)){
+//                print("Capture device audio init")
+//                captureAudio = device as? AVCaptureDevice //initialize audio
+//                captureDeviceAudioFound = true
+//            }
+//        }
+//        if(captureDeviceAudioFound && captureDeviceVideoFound){
+//            captureSession.startRunning()
+//        }
         
         // Configure the session with the output for capturing video
         videoFileOutput = AVCaptureMovieFileOutput()
         
         // Configure the session with the input and the output devices
-        captureSession.addInput(captureDeviceInput)
+        //captureSession.addInput(captureDeviceInput)
+        //captureSession.addInput(audioCaptureDeviceInput)
+        
+//        do {
+//            try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice))
+//        } catch {
+//            print(error)
+//            return
+//        }
+//        
+//        do {
+//            try captureSession.addInput(AVCaptureDeviceInput(device: captureAudio))
+//        } catch {
+//        print(error)
+//            return
+//        }
+        
         captureSession.addOutput(videoFileOutput)
+
         
         // Provide a camera preview
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -94,10 +162,11 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
     @IBAction func capture(sender: AnyObject) {
         if !isRecording {
             isRecording = true
-            UIView.animateWithDuration(0.5, delay: 0.0, options: [.Repeat,
-                .Autoreverse, .AllowUserInteraction], animations: { () -> Void in
-                    self.cameraButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
-                }, completion: nil)
+            self.cameraButton.setImage(buttonImageRecording, forState: .Normal)
+//            UIView.animateWithDuration(0.5, delay: 0.0, options: [.Repeat,
+//                .Autoreverse, .AllowUserInteraction], animations: { () -> Void in
+//                    self.cameraButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
+//                }, completion: nil)
             let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
             let outputPath = "\(documentsPath)/output\(self.videoCount).mov"
             videoCount = videoCount + 1
@@ -108,11 +177,12 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
         } else {
             isRecording = false
             
-            UIView.animateWithDuration(0.5, delay: 1.0, options: [], animations: {
-                () -> Void in
-                self.cameraButton.transform = CGAffineTransformMakeScale(1.0, 1.0)
-                }, completion: nil)
+//            UIView.animateWithDuration(0.5, delay: 1.0, options: [], animations: {
+//                () -> Void in
+//                self.cameraButton.transform = CGAffineTransformMakeScale(1.0, 1.0)
+//                }, completion: nil)
             cameraButton.layer.removeAllAnimations()
+            self.cameraButton.setImage(buttonImageDefault, forState: .Normal)
             videoFileOutput?.stopRecording()
         }
     }
