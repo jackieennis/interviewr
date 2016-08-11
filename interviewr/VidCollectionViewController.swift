@@ -13,6 +13,8 @@ import AVFoundation
 private let reuseIdentifier = "Default"
 
 class VidCollectionViewController: UICollectionViewController {
+    
+    var selectedIndexPath: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,19 +40,22 @@ class VidCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let outputFileURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
-        print(outputFileURL)
-        print("I'm selected!")
-        performSegueWithIdentifier("playVideolol", sender: outputFileURL)
+        
+        selectedIndexPath = indexPath.item
+        print(selectedIndexPath)
+//        let videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
+        performSegueWithIdentifier("playVideolol", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playVideolol" {
             let videoPlayerViewController = segue.destinationViewController as! AVPlayerViewController
-            let videoFileURL = sender as! NSURL
-            //let cell1 = sender as! VidCollectionViewCell
-            print("cassie is a terrible person \(videoFileURL)")
-            videoPlayerViewController.player = AVPlayer(URL: videoFileURL)
+            //let url = sender as! NSURL
+            //print("\(url)")
+            print(VideoRecorderViewController.allRecordingsArray)
+            print(selectedIndexPath)
+            let videoURL = VideoRecorderViewController.allRecordingsArray[selectedIndexPath!]
+            videoPlayerViewController.player = AVPlayer(URL: videoURL)
         }
     
     }
@@ -72,9 +77,9 @@ class VidCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VidCollectionViewCell
         cell.label.text = VideoRecorderViewController.interviewTitlesArray[indexPath.row]
+        cell.videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
         print(VideoRecorderViewController.interviewTitlesArray.count)
-        //cell.videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
-        print("\(cell.label.text)")
+        print(VideoRecorderViewController.allRecordingsArray.count)
         cell.backgroundColor = UIColor.whiteColor()
         
         return cell

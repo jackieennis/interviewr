@@ -144,7 +144,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="label" destination="G8s-vh-gkV" id="9dX-E0-tot"/>
-                                    <segue destination="xxd-bH-5gs" kind="presentation" identifier="playVideolol" id="wbK-08-xgg"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -154,6 +153,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Recordings" id="fgg-Uq-Ny7"/>
+                    <connections>
+                        <segue destination="xxd-bH-5gs" kind="show" identifier="playVideolol" id="UdK-iB-Gzn"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0W-CN-WuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
