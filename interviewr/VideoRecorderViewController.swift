@@ -13,6 +13,7 @@ import AVKit
 class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var interviewQLabel: UILabel!
+    var tapGesture: UITapGestureRecognizer!
     
     //declare global array variables to be edited
     static var allRecordingsArray = [NSURL]()
@@ -113,7 +114,7 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         cameraPreviewLayer?.frame = view.layer.frame
         
-        //brings the camera button to front
+        //brings the camera button and question label to front
         view.bringSubviewToFront(cameraButton)
         
         //begins camera capture session
@@ -129,6 +130,13 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
             
             //show red recording button
             self.cameraButton.setImage(buttonImageRecording, forState: .Normal)
+            
+            //show question labels
+//            view.bringSubviewToFront(interviewQLabel)
+//            interviewQLabel.userInteractionEnabled = true
+//            tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.labelTap))
+//            interviewQLabel.text = VideoRecorderViewController.interviewTitlesArray[0]
+//            
             
             //creates new NSURL path for file output to save video
             let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString

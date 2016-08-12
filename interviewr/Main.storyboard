@@ -83,12 +83,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7B-eY-OW8">
-                                <rect key="frame" x="279" y="120" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMG-Dn-C7Q">
                                 <rect key="frame" x="268" y="439" width="64" height="64"/>
                                 <state key="normal" image="whiteButton-1"/>
@@ -96,13 +90,31 @@
                                     <action selector="capture:" destination="VvD-as-K5h" eventType="touchUpInside" id="DSr-55-adv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7B-eY-OW8">
+                                <rect key="frame" x="0.0" y="23" width="600" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.68957435344827589" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="i9j-p1-hb0"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="19" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z7B-eY-OW8" firstAttribute="centerX" secondItem="ZAY-6k-DHQ" secondAttribute="centerX" id="StH-oj-3vE"/>
+                            <constraint firstItem="z7B-eY-OW8" firstAttribute="width" secondItem="ZAY-6k-DHQ" secondAttribute="width" id="mh8-xR-25Q"/>
                             <constraint firstItem="J3j-rW-CbI" firstAttribute="top" secondItem="mMG-Dn-C7Q" secondAttribute="bottom" constant="48" id="pa6-m0-Ppv"/>
                             <constraint firstItem="mMG-Dn-C7Q" firstAttribute="centerX" secondItem="ZAY-6k-DHQ" secondAttribute="centerX" id="xwf-8p-HJN"/>
-                            <constraint firstItem="z7B-eY-OW8" firstAttribute="top" secondItem="LC5-Ag-H1T" secondAttribute="bottom" constant="100" id="yH7-IT-C2n"/>
+                            <constraint firstItem="z7B-eY-OW8" firstAttribute="top" secondItem="LC5-Ag-H1T" secondAttribute="bottom" constant="3" id="yH7-IT-C2n"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="videoIcon" id="hds-28-sii" userLabel="Video Tab Bar Item">
