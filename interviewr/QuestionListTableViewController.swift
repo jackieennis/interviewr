@@ -24,6 +24,7 @@ class QuestionListTableViewController: UITableViewController, UITabBarController
     }
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension

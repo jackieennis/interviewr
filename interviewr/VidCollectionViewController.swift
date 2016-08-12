@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import CoreMedia
 
 private let reuseIdentifier = "Default"
 
@@ -18,44 +19,34 @@ class VidCollectionViewController: UICollectionViewController {
     var ourPlayer: AVPlayer!
     var screenWidth: CGFloat!
     var screenSize: CGRect!
-    var cgImage: CGImage!
     
     override func viewDidLoad() {
+         super.viewDidLoad()
         screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        
-        super.viewDidLoad()
+        let layout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5);
+        layout.minimumInteritemSpacing = 5; // this number could be anything <=5. Need it here because the default is 10.
+        layout.itemSize = CGSizeMake((self.collectionView!.frame.size.width - 20)/3, 100) // 20 is 2*5 for the 2 edges plus 2*5 for the spaces between the cells
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+       //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     override func viewDidAppear(animated: Bool) {
         print(VideoRecorderViewController.interviewTitlesArray)
         self.collectionView?.reloadData()
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
-    }
-    
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        selectedIndexPath = indexPath.item
-        print(selectedIndexPath)
-//        let videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
-        performSegueWithIdentifier("playVideolol", sender: self)
     }
     
     
@@ -88,24 +79,23 @@ class VidCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VidCollectionViewCell
         cell.label.text = VideoRecorderViewController.interviewTitlesArray[indexPath.row]
         cell.videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
-        cell.backgroundColor = UIColor.whiteColor()
-        
-        var err: NSError? = nil
-        let asset = AVURLAsset(URL: NSURL(fileURLWithPath: "\(cell.videoURL)"), options: nil)
-        let imgGenerator = AVAssetImageGenerator(asset: asset)
-        do {
-            let cgImage = try imgGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
-        } catch {
-            print(err)
-        }
-        
-        // !! check the error before proceeding
-        let uiImage = UIImage(CGImage: cgImage)
-        cell.cellImage.image = uiImage
-        // lay out this image view, or if it already exists, set its image property to uiImage
+        VidCollectionViewCell.thumbnailOutputPath = VideoRecorderViewController.thumbnailOutputPathsArray[indexPath.row]
+        cell.backgroundView = VideoRecorderViewController.thumbnailsArray[indexPath.row]
         
         return cell
     }
+    
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        selectedIndexPath = indexPath.item
+        print(selectedIndexPath)
+        //        let videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
+        performSegueWithIdentifier("playVideolol", sender: self)
+    }
+    
+    
+    
 
 
     // MARK: UICollectionViewDelegate

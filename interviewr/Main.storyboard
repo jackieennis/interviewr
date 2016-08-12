@@ -76,32 +76,41 @@
             <objects>
                 <viewController id="VvD-as-K5h" customClass="VideoRecorderViewController" customModule="interviewr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Zqw-Qc-ddF"/>
-                        <viewControllerLayoutGuide type="bottom" id="4kg-1o-mtS"/>
+                        <viewControllerLayoutGuide type="top" id="LC5-Ag-H1T"/>
+                        <viewControllerLayoutGuide type="bottom" id="J3j-rW-CbI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qsL-sb-6DC">
+                    <view key="view" contentMode="scaleToFill" id="ZAY-6k-DHQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-yo-uXO">
-                                <rect key="frame" x="268.5" y="437" width="64" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7B-eY-OW8">
+                                <rect key="frame" x="279" y="120" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMG-Dn-C7Q">
+                                <rect key="frame" x="268" y="439" width="64" height="64"/>
                                 <state key="normal" image="whiteButton-1"/>
                                 <connections>
-                                    <action selector="capture:" destination="VvD-as-K5h" eventType="touchUpInside" id="MyT-cC-cjl"/>
+                                    <action selector="capture:" destination="VvD-as-K5h" eventType="touchUpInside" id="DSr-55-adv"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4kg-1o-mtS" firstAttribute="top" secondItem="Qbu-yo-uXO" secondAttribute="bottom" constant="50" id="HVG-YT-8nQ"/>
-                            <constraint firstItem="Qbu-yo-uXO" firstAttribute="centerX" secondItem="qsL-sb-6DC" secondAttribute="centerX" id="I59-61-kjX"/>
+                            <constraint firstItem="z7B-eY-OW8" firstAttribute="centerX" secondItem="ZAY-6k-DHQ" secondAttribute="centerX" id="StH-oj-3vE"/>
+                            <constraint firstItem="J3j-rW-CbI" firstAttribute="top" secondItem="mMG-Dn-C7Q" secondAttribute="bottom" constant="48" id="pa6-m0-Ppv"/>
+                            <constraint firstItem="mMG-Dn-C7Q" firstAttribute="centerX" secondItem="ZAY-6k-DHQ" secondAttribute="centerX" id="xwf-8p-HJN"/>
+                            <constraint firstItem="z7B-eY-OW8" firstAttribute="top" secondItem="LC5-Ag-H1T" secondAttribute="bottom" constant="100" id="yH7-IT-C2n"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="videoIcon" id="hds-28-sii" userLabel="Video Tab Bar Item">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="cameraButton" destination="Qbu-yo-uXO" id="X1g-bu-2xz"/>
+                        <outlet property="cameraButton" destination="mMG-Dn-C7Q" id="zsL-Rc-YJW"/>
+                        <outlet property="interviewQLabel" destination="z7B-eY-OW8" id="aYG-S7-TRe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvY-bQ-0q0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -115,29 +124,33 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Ygr-V2-LPn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KYO-kY-O3P">
-                            <size key="itemSize" width="100" height="100"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KYO-kY-O3P">
+                            <size key="itemSize" width="100" height="164"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Default" id="bXb-SN-bYj" customClass="VidCollectionViewCell" customModule="interviewr" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="100" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="164"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8s-vh-gkV">
-                                            <rect key="frame" x="31.5" y="40.5" width="37.5" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8s-vh-gkV">
+                                            <rect key="frame" x="31" y="41" width="37.5" height="18"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Label">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="16" name="Avenir-Book"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9w-Ea-ziX">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -146,7 +159,6 @@
                                     <constraint firstItem="G8s-vh-gkV" firstAttribute="centerY" secondItem="bXb-SN-bYj" secondAttribute="centerY" id="hnZ-ml-M4r"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="cellImage" destination="s9w-Ea-ziX" id="hTu-rB-P1b"/>
                                     <outlet property="label" destination="G8s-vh-gkV" id="9dX-E0-tot"/>
                                 </connections>
                             </collectionViewCell>
@@ -168,7 +180,7 @@
         <!--AV Player View Controller-->
         <scene sceneID="j97-Cg-nFZ">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="xxd-bH-5gs" sceneMemberID="viewController"/>
+                <avPlayerViewController hidesBottomBarWhenPushed="YES" videoGravity="AVLayerVideoGravityResizeAspect" id="xxd-bH-5gs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9J0-kd-L7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2072" y="1414"/>

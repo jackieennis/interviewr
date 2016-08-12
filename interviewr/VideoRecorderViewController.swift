@@ -12,10 +12,14 @@ import AVKit
 
 class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var interviewQLabel: UILabel!
     
     //declare global array variables to be edited
     static var allRecordingsArray = [NSURL]()
     static var interviewTitlesArray = [String]()
+    static var thumbnailsArray = [UIImageView]()
+    static var thumbnailOutputPathsArray = [String]()
+    var textFieldCounter = 1
     
     //declare variables to enable video and audio capture
     let captureSession = AVCaptureSession()
@@ -36,7 +40,6 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
     
     //creates alert controller for video title prompt
     var titleAlert = UIAlertController(title: "Give this recording a name.", message: "Which interview is this for? (ex. Google 11/2016)", preferredStyle: .Alert)
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,15 +76,31 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
         //add and configure the text field of alert
         titleAlert.addTextFieldWithConfigurationHandler({
             (textField) -> Void in
-            let todaysDate = self.getDate()
-            textField.text = "\(todaysDate)"
-        })
+//            let todaysDate = self.getDate()
+            textField.text = "interview \(self.textFieldCounter)"
+       })
         
         //grab the value from the text field to add it to the array of interviewTitles then pushes to collectionViewController once user hits OK
         titleAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = self.titleAlert.textFields![0] as UITextField
             VideoRecorderViewController.interviewTitlesArray.append(textField.text!)
+            
+            do {
+                let asset = AVURLAsset(URL: NSURL(fileURLWithPath: VidCollectionViewCell.thumbnailOutputPath!), options: nil)
+                let imgGenerator = AVAssetImageGenerator(asset: asset)
+                imgGenerator.appliesPreferredTrackTransform = true
+                let cgImage = try imgGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
+                let thumbnailImage = UIImage(CGImage: cgImage)
+                VideoRecorderViewController.thumbnailsArray.append(UIImageView(image: thumbnailImage))
+                print(VideoRecorderViewController.thumbnailsArray)
+            } catch let error as NSError {
+                print("Error generating thumbnail: \(error)")
+            }
+            
             print("Text field: \(textField.text!)")
+            print("\(self.textFieldCounter)")
+            self.textFieldCounter += 1
+            textField.text = "interview \(self.textFieldCounter)"
             dump(VideoRecorderViewController.interviewTitlesArray)
             self.goToCollectionView()
         }))
@@ -114,12 +133,17 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
             //creates new NSURL path for file output to save video
             let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
             let outputPath = "\(documentsPath)/output\(self.videoCount).mov"
+            VideoRecorderViewController.thumbnailOutputPathsArray.append(outputPath)
+            VidCollectionViewCell.thumbnailOutputPath = outputPath
+            
             videoCount = videoCount + 1
             let outputFileURL = NSURL(fileURLWithPath: outputPath)
+            
             
             //adds outputFileURL to array of video URLs
             VideoRecorderViewController.allRecordingsArray.append(outputFileURL)
             dump(interviewr.VideoRecorderViewController.allRecordingsArray)
+            
             
             //begins recording
             videoFileOutput?.startRecordingToOutputFileURL(outputFileURL, recordingDelegate: self)
@@ -159,18 +183,18 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
     }
     
     
-    func getDate() -> String {
-        //formats date to mm/dd/yyyy
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .MediumStyle
-        dateFormatter.timeStyle = .NoStyle
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
-        
-        //sets todays date
-        let date = NSDate()
-        let dateString = dateFormatter.stringFromDate(date)
-        return dateString
-    }
+//    func getDate() -> String {
+//        //formats date to mm/dd/yyyy
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateStyle = .MediumStyle
+//        dateFormatter.timeStyle = .NoStyle
+//        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+//        
+//        //sets todays date
+//        let date = NSDate()
+//        let dateString = dateFormatter.stringFromDate(date)
+//        return dateString
+//    }
     
     
     override func didReceiveMemoryWarning() {
