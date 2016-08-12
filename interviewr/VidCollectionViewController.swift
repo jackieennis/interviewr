@@ -16,17 +16,26 @@ class VidCollectionViewController: UICollectionViewController {
     
     var selectedIndexPath: Int?
     var ourPlayer: AVPlayer!
+    var screenWidth: CGFloat!
+    var screenSize: CGRect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        screenWidth = screenSize.width
+        screenSize = UIScreen.mainScreen().bounds
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {

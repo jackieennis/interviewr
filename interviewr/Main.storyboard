@@ -85,7 +85,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-yo-uXO">
                                 <rect key="frame" x="268.5" y="437" width="64" height="64"/>
-                                <state key="normal" image="whiteButton_final"/>
+                                <state key="normal" image="whiteButton-1"/>
                                 <connections>
                                     <action selector="capture:" destination="VvD-as-K5h" eventType="touchUpInside" id="MyT-cC-cjl"/>
                                 </connections>
@@ -245,6 +245,6 @@
         <image name="collectionIcon" width="28" height="24"/>
         <image name="listIcon" width="28" height="22"/>
         <image name="videoIcon" width="30" height="20"/>
-        <image name="whiteButton_final" width="64" height="64"/>
+        <image name="whiteButton-1" width="64" height="64"/>
     </resources>
 </document>
