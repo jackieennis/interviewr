@@ -35,7 +35,7 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
     var buttonImageRecording: UIImage = UIImage(named: "redButton-1")!
     
     //creates alert controller for video title prompt
-    var titleAlert = UIAlertController(title: "Give this recording a name.", message: "Which interview is this for? (ex. Google 11/2016", preferredStyle: .Alert)
+    var titleAlert = UIAlertController(title: "Give this recording a name.", message: "Which interview is this for? (ex. Google 11/2016)", preferredStyle: .Alert)
 
     
     override func viewDidLoad() {
@@ -81,73 +81,12 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
         titleAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = self.titleAlert.textFields![0] as UITextField
             VideoRecorderViewController.interviewTitlesArray.append(textField.text!)
-            print("Text field: \(textField.text)")
+            print("Text field: \(textField.text!)")
+            dump(VideoRecorderViewController.interviewTitlesArray)
             self.goToCollectionView()
         }))
     }
 
-        
-        
-//        let captureDeviceInput: AVCaptureDeviceInput
-//        do {
-//            captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
-//        } catch {
-//            print(error)
-//            return
-//        }
-//        
-//        let audioCaptureDeviceInput: AVCaptureDeviceInput
-//        do {
-//            audioCaptureDeviceInput = try AVCaptureDeviceInput(device: captureAudio)
-//        } catch {
-//            print(error)
-//            return
-//        }
-        
-//        var captureDeviceVideoFound: Bool = false
-//        var captureDeviceAudioFound:Bool = false
-        
-//        for device in devices {
-//            // Make sure this particular device supports video
-//            if (device.hasMediaType(AVMediaTypeVideo)) {
-//                // Finally check the position and confirm we've got the front camera
-//                if(device.position == AVCaptureDevicePosition.Front) {
-//                    
-//                    captureDevice = device as? AVCaptureDevice //initialize video
-//                    if captureDevice != nil {
-//                        print("Capture device found")
-//                        captureDeviceVideoFound = true;
-//                    }
-//                }
-//            }
-//            if(device.hasMediaType(AVMediaTypeAudio)){
-//                print("Capture device audio init")
-//                captureAudio = device as? AVCaptureDevice //initialize audio
-//                captureDeviceAudioFound = true
-//            }
-//        }
-//        if(captureDeviceAudioFound && captureDeviceVideoFound){
-//            captureSession.startRunning()
-//        }
-        
-        
-        // Configure the session with the input and the output devices
-        //captureSession.addInput(captureDeviceInput)
-        //captureSession.addInput(audioCaptureDeviceInput)
-        
-//        do {
-//            try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice))
-//        } catch {
-//            print(error)
-//            return
-//        }
-//        
-//        do {
-//            try captureSession.addInput(AVCaptureDeviceInput(device: captureAudio))
-//        } catch {
-//        print(error)
-//            return
-//        }
     
     override func viewDidAppear(animated: Bool) {
         //adds cameraPreviewLayer to sublayer of view (must be in viewDidAppear to prevent lag when loading view
@@ -180,7 +119,7 @@ class VideoRecorderViewController: UIViewController, AVCaptureFileOutputRecordin
             
             //adds outputFileURL to array of video URLs
             VideoRecorderViewController.allRecordingsArray.append(outputFileURL)
-            dump(allRecordingsArray)
+            dump(interviewr.VideoRecorderViewController.allRecordingsArray)
             
             //begins recording
             videoFileOutput?.startRecordingToOutputFileURL(outputFileURL, recordingDelegate: self)

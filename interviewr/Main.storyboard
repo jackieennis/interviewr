@@ -135,6 +135,9 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9w-Ea-ziX">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -143,6 +146,7 @@
                                     <constraint firstItem="G8s-vh-gkV" firstAttribute="centerY" secondItem="bXb-SN-bYj" secondAttribute="centerY" id="hnZ-ml-M4r"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="cellImage" destination="s9w-Ea-ziX" id="hTu-rB-P1b"/>
                                     <outlet property="label" destination="G8s-vh-gkV" id="9dX-E0-tot"/>
                                 </connections>
                             </collectionViewCell>

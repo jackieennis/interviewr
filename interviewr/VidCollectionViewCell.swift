@@ -10,6 +10,7 @@ import UIKit
 
 class VidCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var label: UILabel!
     var videoURL: NSURL!
 }

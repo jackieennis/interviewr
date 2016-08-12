@@ -18,19 +18,20 @@ class VidCollectionViewController: UICollectionViewController {
     var ourPlayer: AVPlayer!
     var screenWidth: CGFloat!
     var screenSize: CGRect!
+    var cgImage: CGImage!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        screenWidth = screenSize.width
         screenSize = UIScreen.mainScreen().bounds
+        screenWidth = screenSize.width
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-
+        
+        super.viewDidLoad()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -57,21 +58,18 @@ class VidCollectionViewController: UICollectionViewController {
         performSegueWithIdentifier("playVideolol", sender: self)
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playVideolol" {
             let videoPlayerViewController = segue.destinationViewController as! AVPlayerViewController
-            //let url = sender as! NSURL
-            //print("\(url)")
             print(VideoRecorderViewController.allRecordingsArray)
             print(selectedIndexPath)
             let videoURL = VideoRecorderViewController.allRecordingsArray[selectedIndexPath!]
             ourPlayer = AVPlayer(URL: videoURL)
             videoPlayerViewController.player = ourPlayer
         }
-    
     }
-
-    // MARK: UICollectionViewDataSource
+    
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -85,13 +83,26 @@ class VidCollectionViewController: UICollectionViewController {
         return numberOfItemsInSection
     }
 
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VidCollectionViewCell
         cell.label.text = VideoRecorderViewController.interviewTitlesArray[indexPath.row]
         cell.videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
-        print(VideoRecorderViewController.interviewTitlesArray.count)
-        print(VideoRecorderViewController.allRecordingsArray.count)
         cell.backgroundColor = UIColor.whiteColor()
+        
+        var err: NSError? = nil
+        let asset = AVURLAsset(URL: NSURL(fileURLWithPath: "\(cell.videoURL)"), options: nil)
+        let imgGenerator = AVAssetImageGenerator(asset: asset)
+        do {
+            let cgImage = try imgGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
+        } catch {
+            print(err)
+        }
+        
+        // !! check the error before proceeding
+        let uiImage = UIImage(CGImage: cgImage)
+        cell.cellImage.image = uiImage
+        // lay out this image view, or if it already exists, set its image property to uiImage
         
         return cell
     }
@@ -127,5 +138,4 @@ class VidCollectionViewController: UICollectionViewController {
     
     }
     */
-
 }
