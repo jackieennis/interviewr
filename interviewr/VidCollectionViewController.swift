@@ -20,13 +20,19 @@ class VidCollectionViewController: UICollectionViewController {
     var screenWidth: CGFloat!
     var screenSize: CGRect!
     
+    var newThumbNailArray = [UIImageView]() {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
          super.viewDidLoad()
         screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width
         
         let layout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5);
+        layout.sectionInset = UIEdgeInsetsMake(10, 5, 0, 5);
         layout.minimumInteritemSpacing = 5; // this number could be anything <=5. Need it here because the default is 10.
         layout.itemSize = CGSizeMake((self.collectionView!.frame.size.width - 20)/3, 100) // 20 is 2*5 for the 2 edges plus 2*5 for the spaces between the cells
         
@@ -39,10 +45,13 @@ class VidCollectionViewController: UICollectionViewController {
     
     override func viewDidAppear(animated: Bool) {
         print(VideoRecorderViewController.interviewTitlesArray)
-        self.collectionView?.reloadData()
+        //self.collectionView?.reloadData()
     }
     
-    
+    override func viewWillAppear(animated: Bool) {
+        newThumbNailArray = VideoRecorderViewController.thumbnailsArray
+        //self.collectionView?.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -80,7 +89,13 @@ class VidCollectionViewController: UICollectionViewController {
         cell.label.text = VideoRecorderViewController.interviewTitlesArray[indexPath.row]
         cell.videoURL = VideoRecorderViewController.allRecordingsArray[indexPath.row]
         VidCollectionViewCell.thumbnailOutputPath = VideoRecorderViewController.thumbnailOutputPathsArray[indexPath.row]
-        cell.backgroundView = VideoRecorderViewController.thumbnailsArray[indexPath.row]
+        print(VideoRecorderViewController.thumbnailsArray[indexPath.row].image)
+        print("lolololol",newThumbNailArray)
+        //cell.backgroundView?.removeFromSuperview()
+        //cell.backgroundView = newThumbNailArray[indexPath.row]
+        //cell.backgroundView = VideoRecorderViewController.thumbnailsArray[indexPath.row]
+        newThumbNailArray[indexPath.row].frame = cell.bounds
+        cell.addSubview(newThumbNailArray[indexPath.row])
         
         return cell
     }
